@@ -9,6 +9,7 @@
             margin-left: 10%;
             flex-wrap: wrap;
             padding: 20px;
+
         }
         .posts img {
             width: 200px;
@@ -16,9 +17,30 @@
             border-radius: 10px
         }
         .desc {
-          margin-bottom: 10px
+          margin-bottom: 40px
+        }
+        .btn-primary {
+          position: absolute;
+          bottom: 7px;
+
+        }
+        .pages {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .search {
+            margin-top: 20px;
+            margin-left: 174px
         }
       </style>
+
+  <div class="search">
+    <form action="/posts/" method="get">
+      <input type="text" name="search">
+      <input type="submit" value="search">
+    </form>
+  </div>
+
   <div class="posts">
     {% for post in posts %}
       <div class="card" style="width: 18rem;">
@@ -32,12 +54,17 @@
           <h5 class="card-title">{{post.title}}</h5>
           <div class="desc">
             {% autoescape on %}
-            {{post.description|linebreaks|truncatewords:6}}
+            {{post.description|linebreaks|truncatewords:9}}
             {% endautoescape %}
           </div>
-          <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Подробнее</a>
+          <a name="button" href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Подробнее</a>
         </div>
       </div>
     {% endfor %}
+  </div>
+  <div class="pages">
+      {% for page in max_page %}
+         <a href="/posts/?page={{ page }}"><button>{{ page }}</button></a>
+      {% endfor %}
   </div>
   {% endblock %}

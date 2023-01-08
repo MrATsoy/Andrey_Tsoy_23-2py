@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts.apps.PostsConfig'
+    'posts.apps.PostsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,8 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'homework.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
